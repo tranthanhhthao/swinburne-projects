@@ -23,7 +23,7 @@ let scrollTween = gsap.to(sections, {
         trigger: slider,
         pin: true,
         scrub: 1,
-        snap: false,
+        // snap: 1 / (sections.length - 1),
         end: () => "+=" + slider.offsetWidth
     }
 })
