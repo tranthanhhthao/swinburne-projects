@@ -203,7 +203,12 @@ section {
     scroll-snap-align: start;
 
     text-align: center;
-    place-content: center;
+    /* place-content: center; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 section.intro a {
