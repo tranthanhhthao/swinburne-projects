@@ -186,6 +186,17 @@ nav {
     z-index: 999;
 }
 
+/* preload */
+section.preload {
+    position: fixed;
+    display: none;
+
+    height: 100vh;
+    width: 100vw;
+
+    z-index: 2000;
+}
+
 /* outer */
 .scroll {
     height: 100vh;
@@ -388,12 +399,12 @@ section:nth-of-type(2) .talk:nth-of-type(2) svg {
 
 section:nth-of-type(3) .talk a {
     font-weight: 500;
+    text-decoration: underline;
 }
 
 section:nth-of-type(3) .talk a:hover {
     text-decoration: underline;
 }
-
 
 /* emoji rain */
 
