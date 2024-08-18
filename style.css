@@ -488,3 +488,23 @@ section:nth-of-type(3) .talk a:hover {
         opacity: 0.9;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .emoji {
+        bottom: -20%;
+    }
+    .talk h2 {
+        font-size: 1.4rem;
+        /* font-weight: 400; */
+    }
+    .talk p {
+        padding: 0 20%;
+    }    
+}
+
+@media screen and (max-width: 480px) {
+    .emoji {
+        bottom: -20%;
+    }
+    
+}
