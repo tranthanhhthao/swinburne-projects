@@ -506,6 +506,9 @@ section:nth-of-type(3) .talk a:hover {
 }
 
 @media screen and (max-width: 768px) {
+    nav {
+        right: 20px;
+    }
     .emoji {
         bottom: -20%;
     }
@@ -519,6 +522,9 @@ section:nth-of-type(3) .talk a:hover {
 }
 
 @media screen and (max-width: 480px) {
+    nav {
+        right: 20px;
+    }
     .emoji {
         bottom: -20%;
     }
