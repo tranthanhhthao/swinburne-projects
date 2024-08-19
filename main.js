@@ -65,7 +65,7 @@ const preloaderTl = gsap.timeline({ defaults: { ease: "power1.out", duration: 0.
 function delayToLink(URL) {
     setTimeout(() => {
         window.location.href = URL;
-    }, 2500)
+    }, 2000)
 }
 
 buttonContact.addEventListener('click', () => {
