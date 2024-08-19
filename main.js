@@ -86,3 +86,22 @@ buttonContact.addEventListener('click', () => {
     delayToLink('https://tranthanhhthao.github.io/swinburne-contact/')
 
 });
+
+// Parallax
+const sections = gsap.utils.toArray('section');
+
+sections.forEach(section => {
+    document.addEventListener('mousemove', (e) => {
+        parallax(e, section)
+    });
+})
+
+function parallax(e, element) {
+    const speed = 5;
+
+    const x = (window.innerWidth - e.pageX * speed) / 300;
+    const y = (window.innerHeight - e.pageY * speed) / 300;
+    // console.log(x, y)
+
+    element.style.transform = `translateX(${x}px) translateY(${y}px)`
+}

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 :root {
@@ -97,6 +98,8 @@ a {
     color: var(--black-main);
     cursor: pointer;
     z-index: 10;
+
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .email {
@@ -199,7 +202,7 @@ section.preload {
     width: 100%;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-
+    overflow-x: hidden;
 }
 
 section {
@@ -222,10 +225,6 @@ section.intro a {
     text-decoration: none;
     color: var(--black-main);
     font-weight: 500;
-}
-
-section.intro a:hover {
-    text-decoration: underline;
 }
 
 section h2 {
