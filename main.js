@@ -2,8 +2,10 @@
 gsap.registerPlugin(ScrollTrigger);
 
 ScrollTrigger.defaults({
-    toggleActions: "restart pause resume pause",
-    scroller: '.scroll'
+    toggleActions: "restart reverse restart reverse",
+    scroller: '.scroll',
+    start: '-10% top',
+    end: () => `+=${document.querySelector('.scroll').offsetHeight}`,
 });
 
 gsap.set('section:nth-of-type(1) *', {
@@ -31,7 +33,7 @@ gsap.from('section:nth-of-type(2) .card', {
     y: 100,
 }, '<')
 
-gsap.from('section:nth-of-type(3) *', {
+gsap.from(['section:nth-of-type(3) .talk p', 'section:nth-of-type(3) .talk a'], {
     scrollTrigger: 'section:nth-of-type(3)',
     opacity: 0,
     duration: 1,
@@ -45,60 +47,15 @@ gsap.from('section:nth-of-type(4) *', {
     y: 100,
 })
 
-// track sections
-const content = document.querySelector('.scroll');
-const circles = document.querySelectorAll('.circle');
+const circles = gsap.utils.toArray('.circle');
 
-function getCurrentSection() {
-  const sections = gsap.utils.toArray('.scroll section'); // Get all the sections on the page
-  const currentPosition = content.scrollTop; // Get the current scroll position
-
-  let currentSection = null;
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop; // Get the top position of each section
-    const sectionHeight = section.offsetHeight; // Get the height of each section
-    const sectionBottom = sectionTop + sectionHeight; // Calculate the bottom position of each section
-    // console.log(currentPosition, sectionTop + "-" + sectionBottom)
-
-    if (currentPosition >= sectionTop-1 && currentPosition < sectionBottom) {
-      currentSection = section;
-    }
-  });
-
-  return currentSection;
-}
-
-content.addEventListener('scroll', () => {
-  const currentSection = getCurrentSection();
-  // console.log(currentSection); // Print the ID of the current section
-
-  if (currentSection.id == 'section-intro') {
-    circles[0].style.backgroundColor = '#000';
-    circles[1].style.backgroundColor = 'transparent';
-    circles[2].style.backgroundColor = 'transparent';
-    circles[3].style.backgroundColor = 'transparent';
-
-  } else if (currentSection.id == 'section-mda') {
-    circles[0].style.backgroundColor = 'transparent';
-    circles[1].style.backgroundColor = '#000';
-    circles[2].style.backgroundColor = 'transparent';
-    circles[3].style.backgroundColor = 'transparent';
-
-  } else if (currentSection.id == 'section-ishallpass') {
-    circles[0].style.backgroundColor = 'transparent';
-    circles[1].style.backgroundColor = 'transparent';
-    circles[2].style.backgroundColor = '#000';
-    circles[3].style.backgroundColor = 'transparent';
-
-  } else if (currentSection.id == 'section-future') {
-    circles[0].style.backgroundColor = 'transparent';
-    circles[1].style.backgroundColor = 'transparent';
-    circles[2].style.backgroundColor = 'transparent';
-    circles[3].style.backgroundColor = '#000';
-  }
-});
-
+circles.forEach((circle, index) => {
+    gsap.to(circle, {
+      scrollTrigger: `section:nth-of-type(${index + 1})`,
+      backgroundColor: '#000',
+      duration: .3,
+})
+})
 
 // preloader
 const buttonContact = document.getElementById('click-contact');
