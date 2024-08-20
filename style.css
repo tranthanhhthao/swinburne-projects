@@ -77,8 +77,25 @@ a {
 }
 
 /* nav */
-.nav {
+.button-wrapper {
+    background-color: transparent;
     position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 200px;
+    height: 100px;
+    border-radius: 25px;
+    z-index: 10;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav {
+    position: relative;
     display: block;
 
     font-size: 1rem;
@@ -86,12 +103,9 @@ a {
     background-color: var(--bg-color);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
 
-    margin-top: 20px;
     padding: 10px 20px 10px 20px;
     border-radius: 25px;
 
-    left: 50%;
-    transform: translateX(-50%);
     opacity: 1;
 
     text-decoration: none;
@@ -102,44 +116,35 @@ a {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.email {
-    top: 0
-}
-
 .projects {
     background-color: #000;
     color: var(--bg-color);
     transform-origin: center;
 
-    bottom: 0;
-    margin-bottom: 20px;
-
     animation: shake 1.6s infinite;
     animation-play-state: running;
 }
 
-@keyframes shake {
-    0% {
-        transform: translateX(-50%) rotate(0);
-    }
-    25% {
-        transform: translateX(-50%) rotate(-5deg);
-    }
-    50% {
-        transform: translateX(-50%) rotate(5deg);
-    }
-    75% {
-        transform: translateX(-50%) rotate(-5deg);
-    }
-    100% {
-        transform: translateX(-50%) rotate(0);
-    }
+.button-wrapper:has(.projects) {
+    bottom: 0;
 }
 
-.projects:hover {
-    background-color: var(--bg-color) !important;
-    color: var(--black-main) !important;
-    animation-play-state: paused;
+@keyframes shake {
+    0% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
 }
 
 .nav:hover {
