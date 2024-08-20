@@ -124,28 +124,3 @@ btnWrapper.addEventListener('mousemove', (event) => {
 btnWrapper.addEventListener('mouseleave', (event) => {
     resetMagneto(event, btnWrapper, btnWrapper.querySelector('.nav'));
 })
-
-
-
-// Parallax
-const sections = gsap.utils.toArray('section');
-
-sections.forEach(section => {
-    document.addEventListener('mousemove', (e) => {
-        parallax(e, section)
-    });
-})
-
-function parallax(e, element) {
-    const speed = 5;
-
-    const x = (window.innerWidth - e.pageX * speed) / 300;
-    const y = (window.innerHeight - e.pageY * speed) / 300;
-    // console.log(x, y)
-
-    gsap.to(element, {
-        x: x,
-        y: y,
-        duration: 1,
-    })
-}
