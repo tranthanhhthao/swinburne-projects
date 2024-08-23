@@ -118,9 +118,25 @@ function resetMagneto(event, wrapper, element) {
     });
 }
 
-btnWrapper.addEventListener('mousemove', (event) => {
-    activateMagneto(event, btnWrapper, btnWrapper.querySelector('.nav'));
+// media query
+let mm = gsap.matchMedia();
+
+mm.add({
+    isMobile: '(max-width: 768px)',
+    isDesktop: '(min-width: 769px)',
+}, (context) => {
+
+    let { isMobile, isDesktop } = context.conditions;
+
+    if (isDesktop) {
+        // add event listener
+        btnWrapper.addEventListener('mousemove', (event) => {
+            activateMagneto(event, btnWrapper, btnWrapper.querySelector('.nav'));
+        })
+        btnWrapper.addEventListener('mouseleave', (event) => {
+            resetMagneto(event, btnWrapper, btnWrapper.querySelector('.nav'));
+        })
+    }
 })
-btnWrapper.addEventListener('mouseleave', (event) => {
-    resetMagneto(event, btnWrapper, btnWrapper.querySelector('.nav'));
-})
+
+
