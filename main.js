@@ -19,19 +19,12 @@ gsap.from('section:nth-of-type(1) *', {
     y: 100,
 })
 
-gsap.from(['section:nth-of-type(2) .talk h2', 'section:nth-of-type(2) .talk p'], {
+gsap.from(['section:nth-of-type(2) p', 'section:nth-of-type(2) .search-tool', 'section:nth-of-type(2) .asm'], {
     scrollTrigger: 'section:nth-of-type(2)',
     opacity: 0,
     duration: 1,
     y: 100,
 })
-
-gsap.from('section:nth-of-type(2) .card', {
-    scrollTrigger: 'section:nth-of-type(2)',
-    opacity: 0,
-    duration: 1,
-    y: 100,
-}, '<')
 
 gsap.from(['section:nth-of-type(3) .talk p', 'section:nth-of-type(3) .talk a'], {
     scrollTrigger: 'section:nth-of-type(3)',
@@ -139,4 +132,89 @@ mm.add({
     }
 })
 
+// search tool
+import Classroom2024 from './Classroom.js';
 
+const searchClassroom = document.getElementById('classroom');
+const searchResult = document.getElementById('asm');
+const years = gsap.utils.toArray('.year');
+
+const openNewTabSvg = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#202124"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg>'  
+
+const classOf2024 = ['Global Media Industries', 'Marketing and Consumer Experience', 'Content Creator Lab', 'Intro to Media Studies', 'Innovation Cultures'];
+const classOf2025 = [];
+const classOf2026 = [];
+
+function displayClassOptions(year) {
+    if (year === '2024') {
+        for (const x of classOf2024) {
+            searchClassroom.options[searchClassroom.options.length] = new Option(x, x);
+        }
+    } else if (year === '2025') {
+        for (const x of classOf2025) {
+            searchClassroom.options[searchClassroom.options.length] = new Option(x, x);
+        }
+    } else if (year === '2026') {
+        for (const x of classOf2026) {
+            searchClassroom.options[searchClassroom.options.length] = new Option(x, x);
+        }
+    }
+    displayAsm();
+}
+
+function displayAsm() {
+    searchResult.innerHTML = '';
+    let isClassroom = false
+    for (const classroom in Classroom2024) {
+        if(classroom === searchClassroom.value) {
+            isClassroom = true;
+            for (const assignment in Classroom2024[classroom]) {
+                const a = document.createElement('a');
+                a.href = Classroom2024[classroom][assignment]['link'];
+                a.target = '_blank';
+                a.textContent = Classroom2024[classroom][assignment]['type'];
+                searchResult.appendChild(a);
+                a.innerHTML += openNewTabSvg;
+            }
+        } 
+    }
+
+    if (!isClassroom) {
+        searchResult.textContent = 'Oops, no work shown.';
+    }
+}
+
+displayClassOptions(years[0].textContent);
+displayAsm();
+
+years.forEach((year, index) => {
+    year.addEventListener('click', () => {
+        console.log(year.textContent);
+
+        gsap.to(year, {
+            backgroundColor: getComputedStyle(document.body).getPropertyValue('--black-main'),
+            color: getComputedStyle(document.body).getPropertyValue('--blue-bg'),
+        })
+
+        gsap.to(years.filter((y, i) => i !== index), {
+            backgroundColor: getComputedStyle(document.body).getPropertyValue('--blue-bg'),
+            color: getComputedStyle(document.body).getPropertyValue('--black-main'),
+        })
+
+        if (year.textContent === '2024') {
+            searchClassroom.innerHTML = '';
+            displayClassOptions(year.textContent);
+        } else if (year.textContent === '2025') {
+            searchClassroom.innerHTML = '';
+            displayClassOptions(year.textContent);
+        } else if (year.textContent === '2026') {
+            searchClassroom.innerHTML = '';
+            displayClassOptions(year.textContent);
+        }
+    })
+})
+
+searchClassroom.addEventListener('change', () => {
+    displayAsm();
+
+})    
