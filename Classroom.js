@@ -10,17 +10,21 @@ const Classroom2024 = {
         'A2': {
             type: 'Audio Interview',
             title: '',
-            link: '#'
+            link: 'https://tranthanhhthao.github.io/swinburne-CCL-audiointerview/'
         },
-        'A3': {
-            type: 'Photography Album',
-            title: '',
-            link: '#'
-        },
-        'A4': {
-            type: 'Video Essay',
-            title: '',
-            link: '#'
+    },
+    'Innovation Cultures': {
+        'A1': {
+            type: 'Innovation Poster',
+            title: 'Electric Guitar',
+            link: 'files/summer2024/Innovation_Poster_tranthanhhthao.pdf'
+        }
+    },
+    'Intro to Media Studies': {
+        'A2': {
+            type: 'Week 4 Reflection',
+            title: 'Form versus Content',
+            link: 'files/summer2024/mediastudies_W4_Reflection.pdf'
         }
     }
 }

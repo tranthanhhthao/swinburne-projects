@@ -78,6 +78,11 @@ buttonContact.addEventListener('click', () => {
 
     delayToLink('https://tranthanhhthao.github.io/swinburne-contact/')
 
+    preloaderTl
+        .to('.preload', {
+            display: 'none',
+    })
+
 });
 
 // button magneto
@@ -141,7 +146,7 @@ const years = gsap.utils.toArray('.year');
 
 const openNewTabSvg = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#202124"><path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z"/></svg>'  
 
-const classOf2024 = ['Global Media Industries', 'Marketing and Consumer Experience', 'Content Creator Lab', 'Intro to Media Studies', 'Innovation Cultures'];
+const classOf2024 = ['Content Creator Lab', 'Intro to Media Studies', 'Innovation Cultures', 'Global Media Industries', 'Marketing and Consumer Experience'];
 const classOf2025 = [];
 const classOf2026 = [];
 
