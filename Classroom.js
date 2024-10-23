@@ -12,6 +12,11 @@ const Classroom2024 = {
             title: '',
             link: 'https://tranthanhhthao.github.io/swinburne-CCL-audiointerview/'
         },
+        'A3': {
+            type: 'Photography Album',
+            title: 'Vietnamese Women\'s Day at Kashew Cheese Deli',
+            link: 'https://tranthanhhthao.github.io/swinburne-CCL-photographyalbum/'
+        }
     },
     'Innovation Cultures': {
         'A1': {
@@ -22,7 +27,7 @@ const Classroom2024 = {
     },
     'Intro to Media Studies': {
         'A2': {
-            type: 'Week 4 Reflection',
+            type: 'Weekly Reflections',
             title: 'Form versus Content',
             link: 'files/summer2024/mediastudies_W4_Reflection.pdf'
         }
